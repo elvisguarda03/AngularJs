@@ -1,24 +1,7 @@
-angular.module('projeto', 
-    ['ngResource','ngRoute', 'ngAnimate', 'ngCookies', 'Picture', 'Panel', 'FotoService'])
-    .config(function($routeProvider, $locationProvider) {
+//Módulo responsável pelo carregamento de todos os outros módulos da aplicação.
 
-        $locationProvider.html5Mode(true);
+angular.module('alurapic', ['minhaDiretiva']);
+//Criando um módulo com o nome alurapic que ainda não possui nenhuma dependência.
+//Se o 2° parametro for omitido significa que estou tentando utilizar um módulo existente.
 
-        $routeProvider.when('/fotos', {
-            templateUrl: 'partials/principal.html',
-            controller: 'PrincipalController'
-        });
-
-        $routeProvider.when('/fotos/new', {
-            templateUrl: 'partials/foto.html',
-            controller: 'FotoController'
-        });
-
-        $routeProvider.when('/fotos/edit/:fotoId', {
-            templateUrl: 'partials/foto.html',
-            controller: 'FotoController'
-        });
-
-        $routeProvider.otherwise({redirectTo: '/fotos'});
-
-    });
+//Módulo Angular -
