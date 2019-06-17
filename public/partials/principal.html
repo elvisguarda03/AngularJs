@@ -1,0 +1,30 @@
+<div class="jumbotron">
+  <h1 class="text-center">Alurapic</h1>
+</div>
+
+<p ng-show="message.length" class="alert alert-info">{{message}}</p>
+
+<!-- Diretiva ng-repeat - Serve para iterar sobre uma lista em $scope e repetir um fragmento HTML !-->
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class="input-group">
+        <span class="input-group-btn"><a href="fotos/new" class="btn btn-primary">Nova Foto</a></span>
+
+        <!-- Postergando o two-way data binding em 5ms -->
+        <input ng-model="filtro" class="form-control" type="text" ng-model-options="{ debounce: 500}" placeholder="Filtrar">
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Filtrando os elementos pelo parâmetro filtro -->
+  <!-- A propriedade filter deve ser adicionada após um pipe -->
+  <!-- Filtrando pela propriedade título do objeto foto -->
+  <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: {titulo: filtro}" titulo-foto="{{foto.titulo}}">
+    <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
+    <a href="/fotos/edit/{{foto._id}}" class="btn btn-primary btn-block">Editar</a>
+    <button type="button" ng-click="remove(foto)" class="btn btn-danger btn-block">Deletar</button>
+  </meu-painel>
+</div>

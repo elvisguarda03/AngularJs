@@ -1,32 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="alurapic">
-    <!-- ng-app - É uma diretiva que carrega o módulo especificado dentro das aspas.
+<!-- ng-app - É uma diretiva que carrega o módulo especificado dentro das aspas.
         É necessário importar o script e registrar o módulo dentro da aplicação.
 
         O que são diretivas??
           Elas ensinam novos truques para o navegador.
      !-->
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <title>Alurapic</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
-        <script src="js/lib/angular.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/controllers/fotos-controller.js"></script>
-        <script src="js/directives/minha-diretiva.js"></script>
-    </head>
-    <body ng-controller="FotosController">
-        <div class="container">
-            <div class="jumbotron">
-              <h1 class="text-center">Alurapic</h1>
-            </div>
-            <!-- Diretiva ng-repeat - Serve para iterar sobre uma lista em $scope e repetir um fragmento HTML !-->
-            <meu-painel ng-repeat="foto in fotos" titulo="{{foto.titulo}}">
-                <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
-            </meu-painel>
-        </div> <!-- fim container -->
-    </body>
+<head>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Alurapic</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/efeitos.css">
+
+  <script src="js/lib/angular.min.js"></script>
+
+  <!-- Quando o módulo animate passa a ser utilizado, algumas diretivas do angular começam a atuar na adição e
+        remoção de classes automaticamente -->
+
+  <!-- Este módulo não traz qualquer animação pronta para uso, ele apenas habilita para uma série de diretivas a capacidade
+        de adicionarem ou removerem classes de acordo com o estado de seus elementos. -->
+  <script src="js/lib/angular-animate.min.js"></script>
+  <script src="js/lib/angular-route.min.js"></script>
+  <script src="js/lib/angular-resource.min.js"></script>
+
+  <script src="js/main.js"></script>
+  <script src="js/services/meus-servicos.js">
+
+  </script>
+
+  <script src="js/controllers/fotos-controller.js"></script>
+  <script src="js/controllers/foto-controller.js"></script>
+  <script src="js/controllers/grupos-controller.js">
+
+  </script>
+
+  <script src="js/directives/minhas-diretivas.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <!--  -->
+    <ng-view></ng-view>
+  </div>
+</body>
+
 </html>
